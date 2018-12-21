@@ -2,6 +2,20 @@
 include '../../../../helper/connection.php';
 ?>
 
+<?php 
+session_start();
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
+{
+    echo "
+		<script type='text/javascript'>
+		alert('Anda harus login terlebih dahulu!')
+		window.location='../../../index.php';
+		</script>";
+}
+else
+{
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +33,7 @@ include '../../../../helper/connection.php';
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -44,8 +59,8 @@ include '../../../../helper/connection.php';
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg" alt=""
-                                    class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg"
+                                    alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <a class="dropdown-item" href="../../../process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -100,6 +115,9 @@ include '../../../../helper/connection.php';
                                             <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link active" href="table_user.php">Data User</a>
                                         </li>
                                     </ul>
@@ -140,22 +158,23 @@ include '../../../../helper/connection.php';
 
                     <div class="col-xl-12">
                         <div class="card">
-                            <h5 class="card-header">Data Buku</h5>
+                            <h5 class="card-header">Data User</h5>
                             <div class="card-body">
+                                <a href="form_user.php" class="btn btn-primary">Tambah Data</a><br><br>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>ID Customer</th>
                                             <th>Username</th>
                                             <th>Password</th>
-                                            <th>Tipe User</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             $query = 
-                                            "SELECT * FROM user";
+                                            "SELECT * FROM user where tipe_user='Customer' AND deleted=0 ORDER BY id_customer";
                                             
                                             $result = mysqli_query($con, $query);
 
@@ -165,14 +184,16 @@ include '../../../../helper/connection.php';
 
                                                 while($row = mysqli_fetch_assoc($result))
                                                 {
+                                                    $id_customer = $row['id_customer'];
                                                     echo "
                                                     <tr>
                                                         <td>" . $index++ . "</td>
+                                                        <td>". $id_customer."</td>
                                                         <td>" . $row["username"] . "</td>
-                                                        <td>" . $row["password"] . "</td>
-                                                        <td>" . $row["tipe_user"] . "</td>
+                                                        <td>******</td>
                                                         <td>
-                                                            
+                                                            <a href='form_edit_user.php?id_customer=$id_customer' class='btn btn-warning'>Update</a>
+                                                            <a href='process/delete_user.php?id_customer=$id_customer' class='btn btn-danger'>Delete</a>
                                                         </td>
                                                     </tr>
                                                     ";
@@ -242,3 +263,5 @@ include '../../../../helper/connection.php';
 </body>
 
 </html>
+
+<?php } ?>

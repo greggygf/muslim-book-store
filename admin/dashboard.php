@@ -1,11 +1,11 @@
 <?php 
 session_start();
-if(!$_SESSION['username'] && !$_SESSION['password'])
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
 {
     echo "
 		<script type='text/javascript'>
 		alert('Anda harus login terlebih dahulu!')
-		window.location='index.php';
+		window.location='../../../index.php';
 		</script>";
 }
 else
@@ -29,6 +29,7 @@ else
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id<</title> </head> <body>
             <!-- ============================================================== -->
             <!-- main wrapper -->
@@ -109,6 +110,10 @@ else
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="pages/tables/pengarang/table_pengarang.php">Data
                                                         Pengarang</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="pages/tables/transaksi/table_transaksi.php">Data
+                                                        Transaksi</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="pages/tables/user/table_user.php">Data

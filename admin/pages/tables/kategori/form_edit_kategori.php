@@ -16,6 +16,20 @@ if(mysqli_num_rows($result) == 1)
 
 ?>
 
+<?php 
+session_start();
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
+{
+    echo "
+		<script type='text/javascript'>
+		alert('Anda harus login terlebih dahulu!')
+		window.location='../../../index.php';
+		</script>";
+}
+else
+{
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -33,6 +47,7 @@ if(mysqli_num_rows($result) == 1)
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -58,8 +73,8 @@ if(mysqli_num_rows($result) == 1)
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg" alt=""
-                                    class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg"
+                                    alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <a class="dropdown-item" href="../../../process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -113,6 +128,9 @@ if(mysqli_num_rows($result) == 1)
                                             <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="../user/table_user.php">Data User</a>
                                         </li>
                                     </ul>
@@ -143,7 +161,8 @@ if(mysqli_num_rows($result) == 1)
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-                                            <li class="breadcrumb-item"><a href="table_kategori.php" class="breadcrumb-link">Data Kategori</a></li>
+                                            <li class="breadcrumb-item"><a href="table_kategori.php" class="breadcrumb-link">Data
+                                                    Kategori</a></li>
                                             <li class="breadcrumb-item active" aria-current="page"></li>Form Kategori
                                         </ol>
                                     </nav>
@@ -161,32 +180,27 @@ if(mysqli_num_rows($result) == 1)
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label">ID Kategori</label>
                                         <div class="col-md-9">
-                                            <input type="text" name="id_kategori" class="form-control" value="<?php echo $id_kategori ?>" readonly>
+                                            <input type="text" name="id_kategori" class="form-control" value="<?php echo $id_kategori ?>"
+                                                readonly>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label">Nama Kategori</label>
                                         <div class="col-md-9">
-                                            <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori" 
-                                            value="<?php echo $item["nama_kategori"] ?>" required>
+                                            <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori"
+                                                value="<?php echo $item["nama_kategori"] ?>" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mt-5">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <!-- back to home -->
                                             <a name="backBtn" id="backBtn" class="btn btn-dark btn-block btn-lg" href="table_kategori.php"
                                                 role="button">Kembali</a>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <!-- clear form value using JS. Please check clearform function -->
-                                            <button name="clearFormBtn" id="clearFormBtn" class="btn btn-warning btn-block btn-lg"
-                                                role="button" onclick="clearform()">Clear</button>
-                                        </div>
-
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <!-- input button to submit form. Please check href attribute -->
                                             <input type="submit" class="btn btn-success btn-block btn-lg" value="Update" />
                                         </div>
@@ -251,3 +265,5 @@ if(mysqli_num_rows($result) == 1)
 </body>
 
 </html>
+
+<?php } ?>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Login V4</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -27,12 +27,13 @@
 	<link rel="stylesheet" type="text/css" href="assets/Login_v4/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/Login_v4/css/main.css">
 	<!--===============================================================================================-->
+	<link href='../images/logo.png' rel='SHORTCUT ICON'/>
 </head>
 
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('assets/Login_v4/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('assets/Login_v4/images/bg2.png');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form action="process/cekLogin.php" method="POST" class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
@@ -62,8 +63,14 @@
 						</div>
 					</div>
 
+					<div class="flex-col-c p-t-30">
+						<a href="pages/register/index.php" class="txt2">
+							REGISTER
+						</a>
+					</div>
+
 					<div class="flex-col-c p-t-155">
-						<a href="#" class="txt2">
+						<a href="../index.php" class="txt2">
 							BACK TO HOME
 						</a>
 					</div>

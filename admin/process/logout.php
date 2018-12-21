@@ -2,8 +2,18 @@
 
 session_start();
 
-session_destroy();
+if($_SESSION['id_customer'] == "")
+{
+    session_destroy();
 
-header('location:../index.php');
+    header('location:../index.php');
+}
+else
+{
+    session_destroy();
+
+    header('location:../../index.php');
+}
+
 
 ?>

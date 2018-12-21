@@ -16,6 +16,20 @@ if(mysqli_num_rows($result) == 1)
 
 ?>
 
+<?php 
+session_start();
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
+{
+    echo "
+		<script type='text/javascript'>
+		alert('Anda harus login terlebih dahulu!')
+		window.location='../../../index.php';
+		</script>";
+}
+else
+{
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -33,6 +47,7 @@ if(mysqli_num_rows($result) == 1)
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -58,10 +73,10 @@ if(mysqli_num_rows($result) == 1)
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg" alt=""
-                                    class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg"
+                                    alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                                <a class="dropdown-item" href="process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                <a class="dropdown-item" href="../../../process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -113,6 +128,9 @@ if(mysqli_num_rows($result) == 1)
                                             <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="../user/table_user.php">Data User</a>
                                         </li>
                                     </ul>
@@ -139,8 +157,6 @@ if(mysqli_num_rows($result) == 1)
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Buku</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus
-                                    vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -154,36 +170,46 @@ if(mysqli_num_rows($result) == 1)
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <h5 class="card-header">Data Buku</h5>
-                            <div class="card-body">
-                                <form action="process/edit_buku.php" method="POST">
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">ID Buku</label>
-                                        <div class="col-md-9">
-                                            <input type="text" name="id_buku" class="form-control" value="<?php echo $id_buku ?>"
-                                                readonly>
-                                        </div>
+                    <form action="process/edit_buku.php" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="card">
+                                    <h5 class="card-header">Cover Buku</h5>
+                                    <div class="card-body">
+                                        <img src="../../../../images/<?php echo $item['gambar'] ?>" width="335px">
+                                        <br><br>
+                                            <input type="file" name="gambar" class="form-control">
                                     </div>
+                                </div>
+                            </div>
 
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">Judul Buku</label>
-                                        <div class="col-md-9">
-                                            <input type="text" name="judul_buku" class="form-control" placeholder="Judul Buku"
-                                                value="<?php echo $item['judul_buku'] ?>" required>
+                            <div class="col-xl-9">
+                                <div class="card">
+                                    <h5 class="card-header">Data Buku</h5>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">ID Buku</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="id_buku" class="form-control" value="<?php echo $id_buku ?>"
+                                                    readonly>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">Pengarang</label>
-                                        <div class="col-md-9">
-                                            <select required name="id_pengarang" class="form-control">
-                                                <option value="" disabled selected>--</option>
-                                                <?php 
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Judul Buku</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="judul_buku" class="form-control" placeholder="Judul Buku"
+                                                    value="<?php echo $item['judul_buku'] ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Pengarang</label>
+                                            <div class="col-md-9">
+                                                <select name="id_pengarang" class="form-control">
+                                                    <option value="" disabled selected>--</option>
+                                                    <?php 
                                                 $tampilkan_isi = "select * from pengarang";
                                                 $tampilkan_isi_sql = mysqli_query($con,$tampilkan_isi);
                                                 $no = 1;
@@ -202,16 +228,16 @@ if(mysqli_num_rows($result) == 1)
                                                     echo "<option value='".$isi['id_pengarang']."'".$tag.">".$isi['nama_pengarang']."</option>";
                                                 }
                                                 ?>
-                                            </select>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">Penerbit</label>
-                                        <div class="col-md-9">
-                                            <select required name="id_penerbit" class="form-control" required>
-                                                <option value="" disabled selected>--</option>
-                                                <?php 
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Penerbit</label>
+                                            <div class="col-md-9">
+                                                <select name="id_penerbit" class="form-control">
+                                                    <option value="" disabled selected>--</option>
+                                                    <?php 
                                                 $tampilkan_isi = "select * from penerbit";
                                                 $tampilkan_isi_sql = mysqli_query($con,$tampilkan_isi);
                                                 $no = 1;
@@ -229,76 +255,112 @@ if(mysqli_num_rows($result) == 1)
                                                     echo "<option value='".$isi['id_penerbit']."'".$tag.">".$isi['nama_penerbit']."</option>";
                                                 }
                                                 ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">Stok</label>
-                                        <div class="col-md-9">
-                                            <input type="number" name="stok" class="form-control" placeholder="Stok"
-                                                value="<?php echo $item['stok'] ?>" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label">Berat (kg)</label>
-                                        <div class="col-md-9">
-                                            <input type="number" name="berat" class="form-control" placeholder="Berat"
-                                                value="<?php echo $item['berat'] ?>" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row mt-5">
-                                        <div class="col-md-4">
-                                            <!-- back to home -->
-                                            <a name="backBtn" id="backBtn" class="btn btn-dark btn-block btn-lg" href="table_buku.php"
-                                                role="button">Kembali</a>
+                                                </select>
+                                            </div>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <!-- clear form value using JS. Please check clearform function -->
-                                            <button name="clearFormBtn" id="clearFormBtn" class="btn btn-warning btn-block btn-lg"
-                                                role="button" onclick="clearform()">Clear</button>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Kategori</label>
+                                            <div class="col-md-9">
+                                                <select name="id_kategori" class="form-control" required>
+                                                    <option value="" disabled selected>--</option>
+                                                    <?php 
+                                                $tampilkan_isi = "select * from kategori";
+                                                $tampilkan_isi_sql = mysqli_query($con,$tampilkan_isi);
+                                                $no = 1;
+                                            
+                                                while ($isi = mysqli_fetch_array($tampilkan_isi_sql))
+                                                {
+                                                    if($item['id_kategori'] == $isi['id_kategori'])
+                                                    {
+                                                        $tag = 'selected';
+                                                    }
+                                                    else
+                                                    {
+                                                        $tag = '';
+                                                    }
+                                                    echo "<option value='".$isi['id_kategori']."'".$tag.">".$isi['nama_kategori']."</option>";
+                                                }
+                                                ?>
+                                                </select>
+                                            </div>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <!-- input button to submit form. Please check href attribute -->
-                                            <input type="submit" class="btn btn-success btn-block btn-lg" value="Update" />
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Stok</label>
+                                            <div class="col-md-9">
+                                                <input type="number" name="stok" class="form-control" placeholder="Stok"
+                                                    value="<?php echo $item['stok'] ?>" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Berat (kg)</label>
+                                            <div class="col-md-9">
+                                                <input type="number" name="berat" class="form-control" placeholder="Berat"
+                                                    value="<?php echo $item['berat'] ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Harga</label>
+                                            <div class="col-md-9">
+                                                <input type="number" name="harga" class="form-control" placeholder="Stok"
+                                                    value="<?php echo $item['harga'] ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Deskripsi Buku</label>
+                                            <div class="col-md-9">
+                                                <textarea name="deskripsi" cols="30" rows="10" class="form-control"><?php echo $item['deskripsi'] ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mt-5">
+                                            <div class="col-md-6">
+                                                <!-- back to home -->
+                                                <a name="backBtn" id="backBtn" class="btn btn-dark btn-block btn-lg"
+                                                    href="table_buku.php" role="button">Kembali</a>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <!-- input button to submit form. Please check href attribute -->
+                                                <input type="submit" class="btn btn-success btn-block btn-lg" value="Update" />
+                                            </div>
+                                        </div>
+                    </form>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
+    </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript: void(0);">About</a>
+                        <a href="javascript: void(0);">Support</a>
+                        <a href="javascript: void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end footer -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
@@ -327,3 +389,5 @@ if(mysqli_num_rows($result) == 1)
 </body>
 
 </html>
+
+<?php } ?>

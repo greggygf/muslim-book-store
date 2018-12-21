@@ -2,6 +2,20 @@
 include '../../../../helper/connection.php';
 ?>
 
+<?php 
+session_start();
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
+{
+    echo "
+		<script type='text/javascript'>
+		alert('Anda harus login terlebih dahulu!')
+		window.location='../../../index.php';
+		</script>";
+}
+else
+{
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +33,7 @@ include '../../../../helper/connection.php';
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -99,6 +114,9 @@ include '../../../../helper/connection.php';
                                             <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="../user/table_user.php">Data User</a>
                                         </li>
                                     </ul>
@@ -152,7 +170,7 @@ include '../../../../helper/connection.php';
                                 }
                                 ?>
                                 <br><br>
-                                <table class="table table-striped">
+                                <table id="tabell" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -162,17 +180,18 @@ include '../../../../helper/connection.php';
                                             <th>Penerbit</th>
                                             <th>Stok</th>
                                             <th>Berat</th>
+                                            <th>Gambar</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             $query = 
-                                            "SELECT b.id_buku,b.judul_buku,pg.nama_pengarang,pn.nama_penerbit,b.stok,b.berat,b.deleted from buku b,pengarang pg,penerbit pn WHERE b.id_pengarang = pg.id_pengarang 
+                                            "SELECT b.id_buku,b.judul_buku,pg.nama_pengarang,pn.nama_penerbit,b.stok,b.berat,b.gambar,b.deleted from buku b,pengarang pg,penerbit pn WHERE b.id_pengarang = pg.id_pengarang 
                                             AND
                                             b.id_penerbit = pn.id_penerbit
                                             AND
-                                            b.deleted = 0";
+                                            b.deleted = 0 ORDER BY b.id_buku";
                                             
                                             $result = mysqli_query($con, $query);
 
@@ -192,6 +211,7 @@ include '../../../../helper/connection.php';
                                                         <td>" . $row["nama_penerbit"] . "</td>
                                                         <td>" . $row["stok"] . "</td>
                                                         <td>" . $row["berat"] . " kg</td>
+                                                        <td><img src='../../../../images/". $row["gambar"] ."' width='200px'></td>
                                                         <td>
                                                             <a href='form_edit_buku.php?id_buku=$id_buku' class='btn btn-warning'>Update</a>
                                                             <a href='process/delete_buku.php?id_buku=$id_buku' class='btn btn-danger'>Delete</a>
@@ -261,6 +281,18 @@ include '../../../../helper/connection.php';
     <script src="../../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="../../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../../assets/libs/js/dashboard-ecommerce.js"></script>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#tabell').DataTable();
+} );
+    </script>
 </body>
 
 </html>
+
+<?php } ?>

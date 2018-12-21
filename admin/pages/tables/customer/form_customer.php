@@ -2,6 +2,20 @@
 include '../../../../helper/connection.php';
 ?>
 
+<?php 
+session_start();
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "Admin")
+{
+    echo "
+		<script type='text/javascript'>
+		alert('Anda harus login terlebih dahulu!')
+		window.location='../../../index.php';
+		</script>";
+}
+else
+{
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +33,7 @@ include '../../../../helper/connection.php';
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -44,8 +59,8 @@ include '../../../../helper/connection.php';
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg" alt=""
-                                    class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg"
+                                    alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <a class="dropdown-item" href="../../../process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -99,6 +114,9 @@ include '../../../../helper/connection.php';
                                             <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="../user/table_user.php">Data User</a>
                                         </li>
                                     </ul>
@@ -141,7 +159,7 @@ include '../../../../helper/connection.php';
 
                     <div class="col-xl-12">
                         <div class="card">
-                            <h5 class="card-header">Data Penerbit</h5>
+                            <h5 class="card-header">Data Customer</h5>
                             <div class="card-body">
                                 <form action="process/add_customer.php" method="POST">
 
@@ -177,11 +195,13 @@ include '../../../../helper/connection.php';
                                         <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                                         <div class="col-md-9">
                                             <div class="custom-control custom-radio">
-                                                <input id="lakilaki" name="jk_customer" type="radio" class="custom-control-input" required="" value="Laki-Laki">
+                                                <input id="lakilaki" name="jk_customer" type="radio" class="custom-control-input"
+                                                    required="" value="Laki-Laki">
                                                 <label class="custom-control-label" for="lakilaki">Laki-Laki</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input id="perempuan" name="jk_customer" type="radio" class="custom-control-input" required="" value="Perempuan">
+                                                <input id="perempuan" name="jk_customer" type="radio" class="custom-control-input"
+                                                    required="" value="Perempuan">
                                                 <label class="custom-control-label" for="perempuan">Perempuan</label>
                                             </div>
                                         </div>
@@ -212,19 +232,13 @@ include '../../../../helper/connection.php';
                                     </div>
 
                                     <div class="form-group row mt-5">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <!-- back to home -->
                                             <a name="backBtn" id="backBtn" class="btn btn-dark btn-block btn-lg" href="table_customer.php"
                                                 role="button">Kembali</a>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <!-- clear form value using JS. Please check clearform function -->
-                                            <button name="clearFormBtn" id="clearFormBtn" class="btn btn-warning btn-block btn-lg"
-                                                role="button" onclick="clearform()">Clear</button>
-                                        </div>
-
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <!-- input button to submit form. Please check href attribute -->
                                             <input type="submit" class="btn btn-success btn-block btn-lg" value="Tambah" />
                                         </div>
@@ -289,3 +303,5 @@ include '../../../../helper/connection.php';
 </body>
 
 </html>
+
+<?php } ?>
