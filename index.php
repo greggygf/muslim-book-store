@@ -91,7 +91,8 @@ $nama = $row['nama_customer'];
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
 												</g>
 											</svg>
-											<div>Cart <span>(<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
+											<div>Cart <span>(
+													<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
 										</a>
 									</div>
 

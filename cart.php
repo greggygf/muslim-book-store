@@ -88,7 +88,8 @@ $nama = $row['nama_customer'];
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
 												</g>
 											</svg>
-											<div>Cart <span>(<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
+											<div>Cart <span>(
+													<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
 										</a>
 									</div>
 									<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -324,7 +325,7 @@ $nama = $row['nama_customer'];
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;<script>
 									document.write(new Date().getFullYear());
-									</script> All rights reserved | MuslimSunnah.id <br>
+								</script> All rights reserved | MuslimSunnah.id <br>
 								<a href="https://colorlib.com" target="_blank">Colorlib</a>
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</div>

@@ -199,7 +199,8 @@ $namakategori = $row2['nama_kategori'];
 						<div class="row">
 							<div class="col">
 								<div class="home_content">
-									<div class="home_title">Buku <?php echo $namakategori; ?><span>.</span></div>
+									<div class="home_title">Buku
+										<?php echo $namakategori; ?><span>.</span></div>
 								</div>
 							</div>
 						</div>
@@ -319,7 +320,7 @@ $namakategori = $row2['nama_kategori'];
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;<script>
 									document.write(new Date().getFullYear());
-									</script> All rights reserved | MuslimSunnah.id <br>
+								</script> All rights reserved | MuslimSunnah.id <br>
 								<a href="https://colorlib.com" target="_blank">Colorlib</a>
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</div>

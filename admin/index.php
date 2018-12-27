@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/Login_v4/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/Login_v4/css/main.css">
 	<!--===============================================================================================-->
-	<link href='../images/logo.png' rel='SHORTCUT ICON'/>
+	<link href='../images/logo.png' rel='SHORTCUT ICON' />
 </head>
 
 <body>

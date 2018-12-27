@@ -14,8 +14,9 @@
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="styles/product.css">
 	<link rel="stylesheet" type="text/css" href="styles/product_responsive.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-	<link href='images/logo.png' rel='SHORTCUT ICON'/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+	 crossorigin="anonymous">
+	<link href='images/logo.png' rel='SHORTCUT ICON' />
 	<link rel="icon" type="image/png" href="images/logo.png">
 </head>
 
@@ -80,7 +81,8 @@ $id_buku = $_GET['id_buku'];
 								<div class="header_extra ml-auto">
 									<div class="shopping_cart">
 										<a href="cart.php">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
+											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 												<g>
 													<path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3
 													c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1
@@ -89,7 +91,8 @@ $id_buku = $_GET['id_buku'];
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
 												</g>
 											</svg>
-											<div>Cart <span>(<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
+											<div>Cart <span>(
+													<?php if(isset($_SESSION["nomor"])){ echo $_SESSION["nomor"]; } else{ echo 0;} ?>)</span></div>
 										</a>
 									</div>
 									<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -199,7 +202,7 @@ $id_buku = $_GET['id_buku'];
 				?>
 					<div class='col-lg-6'>
 						<div class='details_image'>
-							<div class='details_image_large'><img src='images/<?php echo $row['gambar'] ?>' alt=''>
+							<div class='details_image_large'><img src='images/<?php echo $row[' gambar'] ?>' alt=''>
 							</div>
 						</div>
 					</div>
@@ -211,10 +214,10 @@ $id_buku = $_GET['id_buku'];
 							<div class="details_name">
 								<?php echo $row['judul_buku'] ?>
 							</div>
-							
+
 							<div class="details_price">Rp.
 								<?php echo $row['harga'] ?>,-</div>
-							
+
 
 							<!-- In Stock -->
 							<div class="in_stock_container">

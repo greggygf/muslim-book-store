@@ -47,7 +47,7 @@ else
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON' />
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -73,8 +73,8 @@ else
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg" alt=""
-                                    class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/avatar-1.jpg"
+                                    alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <a class="dropdown-item" href="../../../process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -188,8 +188,8 @@ else
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label">Nama</label>
                                         <div class="col-md-9">
-                                            <input type="text" name="nama_customer" class="form-control" placeholder="Nama Customer" value="<?php echo $item['nama_customer'] ?>"
-                                                required>
+                                            <input type="text" name="nama_customer" class="form-control" placeholder="Nama Customer"
+                                                value="<?php echo $item['nama_customer'] ?>" required>
                                         </div>
                                     </div>
 
@@ -197,11 +197,15 @@ else
                                         <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                                         <div class="col-md-9">
                                             <div class="custom-control custom-radio">
-                                                <input id="lakilaki" name="jk_customer" type="radio" class="custom-control-input" required="" value="Laki-Laki" <?php if($item['jk_customer'] == "Laki-Laki") { echo "checked";} ?>>
+                                                <input id="lakilaki" name="jk_customer" type="radio" class="custom-control-input"
+                                                    required="" value="Laki-Laki" <?php if($item['jk_customer']=="Laki-Laki"
+                                                    ) { echo "checked" ;} ?>>
                                                 <label class="custom-control-label" for="lakilaki">Laki-Laki</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input id="perempuan" name="jk_customer" type="radio" class="custom-control-input" required="" value="Perempuan" <?php if($item['jk_customer'] == "Perempuan") { echo "checked";} ?>>
+                                                <input id="perempuan" name="jk_customer" type="radio" class="custom-control-input"
+                                                    required="" value="Perempuan" <?php if($item['jk_customer']=="Perempuan"
+                                                    ) { echo "checked" ;} ?>>
                                                 <label class="custom-control-label" for="perempuan">Perempuan</label>
                                             </div>
                                         </div>
@@ -218,16 +222,16 @@ else
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label">Email</label>
                                         <div class="col-md-9">
-                                            <input type="email" name="email_customer" class="form-control" placeholder="Email" value="<?php echo $item['email_customer'] ?>"
-                                                required>
+                                            <input type="email" name="email_customer" class="form-control" placeholder="Email"
+                                                value="<?php echo $item['email_customer'] ?>" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label">Nomor Telepon</label>
                                         <div class="col-md-9">
-                                            <input type="number" name="telp_customer" class="form-control" placeholder="Nomor Telepon" value="<?php echo $item['telp_customer'] ?>"
-                                                required>
+                                            <input type="number" name="telp_customer" class="form-control" placeholder="Nomor Telepon"
+                                                value="<?php echo $item['telp_customer'] ?>" required>
                                         </div>
                                     </div>
 
@@ -256,14 +260,9 @@ else
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            Copyright © 2018 MuslimSunnah.ID. All rights reserved.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
                         </div>
                     </div>
                 </div>

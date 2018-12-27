@@ -47,7 +47,7 @@ else
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <link href='../../../../images/logo.png' rel='SHORTCUT ICON'/>
+    <link href='../../../../images/logo.png' rel='SHORTCUT ICON' />
     <title>Admin | MuslimSunnah.id</title>
 </head>
 
@@ -189,7 +189,7 @@ else
                                         <label class="col-md-3 col-form-label">Nama Kategori</label>
                                         <div class="col-md-9">
                                             <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori"
-                                                value="<?php echo $item["nama_kategori"] ?>" required>
+                                                value="<?php echo $item[" nama_kategori"] ?>" required>
                                         </div>
                                     </div>
 
@@ -218,14 +218,9 @@ else
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            Copyright © 2018 MuslimSunnah.ID. All rights reserved.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
                         </div>
                     </div>
                 </div>

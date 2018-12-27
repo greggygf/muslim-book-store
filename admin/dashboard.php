@@ -29,7 +29,7 @@ else
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <link href='../images/logo.png' rel='SHORTCUT ICON'/>
+    <link href='../images/logo.png' rel='SHORTCUT ICON' />
     <title>Admin | MuslimSunnah.id<</title> </head> <body>
             <!-- ============================================================== -->
             <!-- main wrapper -->
@@ -48,12 +48,13 @@ else
                         <div class="collapse navbar-collapse " id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto navbar-right-top">
                                 <li class="nav-item">
-                                    
+
                                 </li>
                                 <li class="nav-item dropdown nav-user">
                                     <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg"
-                                            alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i class="fas fa-angle-down"></i></a>
+                                            alt="" class="user-avatar-md rounded-circle">&nbsp;&nbsp;&nbsp;Admin <i
+                                            class="fas fa-angle-down"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                         <a class="dropdown-item" href="process/logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                                     </div>
@@ -151,15 +152,15 @@ else
                                 <div class="card">
                                     <h3 class="card-header">Selamat Datang</h3>
                                     <div class="card-body">
-                                            <p><b>Toko Buku MuslimSunnah.id</b> merupakan aplikasi Toko Buku berbasis
-                                                web. Di aplikasi ini, terdapat pembagian user/multi user yaitu
-                                                Admin dan customer. Selain itu aplikasi ini terdiri
-                                                dari menu Buku, Customer, Kategori, Penerbit, Pengarang, User.
-                                                Diharapkan aplikasi ini dapat memudahkan pekerjaan dalam
-                                                melakukan pendataan buku,pengarang,penulis, dan pembayaran.</p>
-                                            <p><b>Aplikasi</b> ini menggunakan bahasa pemrograman server side (PHP) dan
-                                                client side (HTML,CSS, BOOTSTRAP 4, JAVA SCRIPT), dan menggunakan program
-                                                XAMPP, HeidiSQL, Visual Studio Code, dan Google Chrome.</p>
+                                        <p><b>Toko Buku MuslimSunnah.id</b> merupakan aplikasi Toko Buku berbasis
+                                            web. Di aplikasi ini, terdapat pembagian user/multi user yaitu
+                                            Admin dan customer. Selain itu aplikasi ini terdiri
+                                            dari menu Buku, Customer, Kategori, Penerbit, Pengarang, User.
+                                            Diharapkan aplikasi ini dapat memudahkan pekerjaan dalam
+                                            melakukan pendataan buku,pengarang,penulis, dan pembayaran.</p>
+                                        <p><b>Aplikasi</b> ini menggunakan bahasa pemrograman server side (PHP) dan
+                                            client side (HTML,CSS, BOOTSTRAP 4, JAVA SCRIPT), dan menggunakan program
+                                            XAMPP, HeidiSQL, Visual Studio Code, dan Google Chrome.</p>
                                     </div>
                                 </div>
                             </div>
