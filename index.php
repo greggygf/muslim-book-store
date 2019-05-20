@@ -243,9 +243,10 @@ $nama = $row['nama_customer'];
 										$id_buku = $row['id_buku'];
 										echo "
 										<div class='product'>
+										<a href='product.php?id_buku=$id_buku'>
 											<div class='product_image'><img src='images/". $row['gambar'] ."' alt=''></div>
 											<div class='product_content'>
-												<div class='product_title'><a href='product.php?id_buku=$id_buku'>".$row['judul_buku']."</a></div>
+												<div class='product_title'>".$row['judul_buku']."</a></div>
 												<div class='product_price'>Rp.".$row['harga'].",-</div>
 												<br>
 												<div class='nmpengarang'>".$row['nama_pengarang']."</div>
