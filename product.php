@@ -202,7 +202,7 @@ $id_buku = $_GET['id_buku'];
 				?>
 					<div class='col-lg-6'>
 						<div class='details_image'>
-							<div class='details_image_large'><img src='images/<?php echo $row[' gambar'] ?>' alt=''>
+							<div class='details_image_large'><img src='images/<?php echo $row['gambar'] ?>' alt=''>
 							</div>
 						</div>
 					</div>
